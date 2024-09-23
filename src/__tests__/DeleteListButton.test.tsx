@@ -3,7 +3,7 @@
 // Imports
 import { render } from "@testing-library/react";
 import { expect, test, it } from 'vitest';
-import { DeleteListButton } from "../components/DeleteListButton.tsx";
+import { DeleteListButton } from "../components/DeleteListButton";
 
 it('Controll Test', () => {
     expect(2 + 2).toBe(4);

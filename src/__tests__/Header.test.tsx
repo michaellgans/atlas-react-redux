@@ -1,7 +1,15 @@
 // Test for Header Component
 
-import { it, expect, describe } from 'vitest';
+// Imports
+import { render } from "@testing-library/react";
+import { expect, test, it } from 'vitest';
+import { Header } from "../components/Header";
 
-it('My First Test', () => {
+it('Controll Test', () => {
     expect(2 + 2).toBe(4);
+});
+
+test('Header renders correctly', () => {
+    const { container } = render(<Header />);
+    expect(container).toMatchSnapshot();
 })

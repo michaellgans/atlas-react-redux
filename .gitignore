@@ -11,6 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+commit
+newFile
+push
 
 # Editor directories and files
 .vscode/*

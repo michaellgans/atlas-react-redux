@@ -12,4 +12,4 @@ it('Controll Test', () => {
 test('Header renders correctly', () => {
     const { container } = render(<Header />);
     expect(container).toMatchSnapshot();
-})
+});

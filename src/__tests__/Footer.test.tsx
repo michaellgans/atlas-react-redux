@@ -12,4 +12,4 @@ it('Controll Test', () => {
 test('Footer renders correctly', () => {
     const { container } = render(<Footer />);
     expect(container).toMatchSnapshot();
-})
+});

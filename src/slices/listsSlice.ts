@@ -11,18 +11,22 @@ interface ListState {
     items: List[];
 }
 
+type AddCardPayload = {
+    listId: string;
+    cardId: string;
+}
+
 const initialState: ListState = {
   // Lists have unique ID, title, and array of card IDs
   items: [],
 };
 
 // Reducer Functions
-
-// handleAddList
 export const listSlice = createSlice({
     name: "listsSlice",
     initialState,
     reducers: {
+        // handleAddList
         addList: (state, action: PayloadAction<string>) => {
             state.items.push({
                 id: Date.now().toString(),
@@ -30,15 +34,28 @@ export const listSlice = createSlice({
                 cardArray: [],
             });
         },
-    },
+        // handleDeleteList
+        deleteList: (state, action: PayloadAction<string>) => {
+            state.items = state.items.filter(item => item.id !== action.payload);
+        },
+        // handleAddCardToList
+        addCardToList: (state, action: PayloadAction<AddCardPayload>) => {
+            const { listId, cardId } = action.payload;
+            const list = state.items.find(item => item.id === listId);
+            
+            if (list) {
+                list.cardArray.push(cardId);
+            }
+        },
+        // handleClearBoard
+        clearBoard: (state) => {
+            state.items = [];
+        },
+    }
 });
 
-// handleDeleteList
-// handleAddCard
-// handleClearBoard
-
 // Export Actions
-export const { addList } = listSlice.actions;
+export const { addList, deleteList, addCardToList, clearBoard } = listSlice.actions;
 
 // Export Reducer
 export default listSlice.reducer;

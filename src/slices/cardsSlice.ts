@@ -12,6 +12,13 @@ const initialState = {
 // Reducer Functions
 
 // handleCreateCard
+        // handleClearCard
+        deleteCard: (state, action: PayloadAction<string>) => {
+          state.items.forEach((item) => {
+              // Filter out the card by ID
+              item.cardArray = item.cardArray.filter(cardId => cardId !== action.payload);
+          });
+      },
 // handledeleteCard
 // handleClearBoard
 

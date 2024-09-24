@@ -23,7 +23,9 @@ exports[`List renders correctly 1`] = `
         />
       </svg>
     </button>
-    <h3 />
+    <h3>
+      Test Title
+    </h3>
     <div
       class="card group/card m-3 flex min-h-24 w-full flex-col items-start rounded bg-off-white-light px-4 py-2 text-blue"
     >

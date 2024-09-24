@@ -10,6 +10,6 @@ it('Controll Test', () => {
 });
 
 test('List renders correctly', () => {
-    const { container } = render(<List />);
+    const { container } = render(<List listTitle="Test Title"/>);
     expect(container).toMatchSnapshot();
 });

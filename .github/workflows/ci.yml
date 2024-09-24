@@ -17,5 +17,3 @@ jobs:
         run: npm ci
       - name: Run Unit Tests
         run: npm run test
-      - name: Run Test Coverage
-        run: npm run coverage

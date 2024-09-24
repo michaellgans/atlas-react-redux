@@ -13,7 +13,7 @@ exports[`Footer renders correctly 1`] = `
         type="text"
       />
       <button
-        class="rounded bg-teal px-6 py-4 text-xl font-semibold text-off-white-light"
+        class="mr-3 rounded bg-teal px-6 py-4 text-xl font-semibold text-off-white-light"
         type="submit"
       >
         Save

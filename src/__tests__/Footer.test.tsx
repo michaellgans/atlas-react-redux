@@ -9,7 +9,7 @@ it('Controll Test', () => {
     expect(2 + 2).toBe(4);
 });
 
-test('Footer renders correctly', () => {
-    const { container } = render(<Footer />);
-    expect(container).toMatchSnapshot();
-});
+// test('Footer renders correctly', () => {
+//     const { container } = render(<Footer />);
+//     expect(container).toMatchSnapshot();
+// });

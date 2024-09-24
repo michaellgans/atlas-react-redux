@@ -1,10 +1,20 @@
 // Slice for the lists on the board
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const initialState = {
+interface List {
+    id: string;
+    title: string;
+    cardArray: string[];
+}
+
+interface ListState {
+    items: List[];
+}
+
+const initialState: ListState = {
   // Lists have unique ID, title, and array of card IDs
   items: [
-    { id: "1", title: "List Title", cardArray: [] }
+    { id: "1", title: "Default Title", cardArray: [] }
   ],
 };
 
@@ -29,4 +39,8 @@ export const listSlice = createSlice({
 // handleAddCard
 // handleClearBoard
 
+// Export Actions
 export const { addList } = listSlice.actions;
+
+// Export Reducer
+export default listSlice.reducer;

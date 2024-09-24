@@ -1,15 +1,33 @@
 // Footer Component
 
+// Imports
+import { addList } from "../slices/listsSlice";
+import { useAppDispatch } from "../store";
+import { useState, FormEvent } from "react";
+
 // Returns a Footer Component
 export function Footer() {
   // Define Hook
+  const [newList, setNewList] = useState("");
+  const dispatch = useAppDispatch();
+
+  const handleAddList = (event: FormEvent) => {
+    // Prevent "submit" from reloading page
+    event.preventDefault();
+    if (newList.trim() !== "") {
+      dispatch(addList(newList));
+      setNewList("");
+    }
+  };
+
   return (
     <footer className="sticky bottom-0 left-0 flex w-screen items-center justify-center space-x-8 border-t-2 border-blue bg-off-white-light p-8">
       {/* onSubmit=alert('Create list') */}
-      <form>
+      <form onSubmit={handleAddList}>
         <input
           type="text"
           placeholder="List title"
+          onChange={(event) => setNewList(event.target.value)}
           name="title"
           className="border-0 bg-transparent text-3xl font-semibold text-blue placeholder:text-blue placeholder:opacity-50 focus:outline-none"
         />

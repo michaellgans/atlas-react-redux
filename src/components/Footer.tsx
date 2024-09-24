@@ -3,7 +3,7 @@
 // Imports
 import { addList } from "../slices/listsSlice";
 import { useAppDispatch } from "../store";
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 
 // Returns a Footer Component
 export function Footer() {
@@ -15,8 +15,10 @@ export function Footer() {
     // Prevent "submit" from reloading page
     event.preventDefault();
     if (newList.trim() !== "") {
+      console.log("newList", newList);
       dispatch(addList(newList));
       setNewList("");
+      console.log("after clear", newList);
     }
   };
 
@@ -26,6 +28,7 @@ export function Footer() {
       <form onSubmit={handleAddList}>
         <input
           type="text"
+          value={newList}
           placeholder="List title"
           onChange={(event) => setNewList(event.target.value)}
           name="title"

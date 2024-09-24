@@ -13,9 +13,7 @@ interface ListState {
 
 const initialState: ListState = {
   // Lists have unique ID, title, and array of card IDs
-  items: [
-    { id: "1", title: "Default Title", cardArray: [] }
-  ],
+  items: [],
 };
 
 // Reducer Functions

@@ -1,9 +1,9 @@
 // Footer Component
 
 // Imports
-import { addList } from "../slices/listsSlice";
+import { addList, clearBoard } from "../slices/listsSlice";
 import { useAppDispatch } from "../store";
-import { useState, useEffect, FormEvent } from "react";
+import { useState, FormEvent } from "react";
 
 // Returns a Footer Component
 export function Footer() {
@@ -15,16 +15,18 @@ export function Footer() {
     // Prevent "submit" from reloading page
     event.preventDefault();
     if (newList.trim() !== "") {
-      console.log("newList", newList);
       dispatch(addList(newList));
       setNewList("");
-      console.log("after clear", newList);
     }
+  };
+
+  const handleClearBoard = () => {
+    console.log("Clear board was pressed");
+    dispatch(clearBoard());
   };
 
   return (
     <footer className="sticky bottom-0 left-0 flex w-screen items-center justify-center space-x-8 border-t-2 border-blue bg-off-white-light p-8">
-      {/* onSubmit=alert('Create list') */}
       <form onSubmit={handleAddList}>
         <input
           type="text"
@@ -40,9 +42,9 @@ export function Footer() {
         >
           Save
         </button>
-        {/* onclick="alert('Clear board')" */}
         <button
           type="button"
+          onClick={handleClearBoard}
           className="rounded bg-teal px-6 py-4 text-xl font-semibold text-off-white-light"
         >
           Clear Board

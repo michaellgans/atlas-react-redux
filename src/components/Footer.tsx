@@ -15,7 +15,7 @@ export function Footer() {
         />
         <button
           type="submit"
-          className="rounded bg-teal px-6 py-4 text-xl font-semibold text-off-white-light"
+          className="mr-3 rounded bg-teal px-6 py-4 text-xl font-semibold text-off-white-light"
         >
           Save
         </button>

@@ -1,11 +1,28 @@
 // DeleteCardButton Component
 
+// Asset Imports
+import { deleteCard } from "../slices/cardsSlice";
+import { useAppDispatch } from "../store";
+
+// Types
+type DeleteCardButtonProps = {
+  cardID: string;
+};
+
 // Returns a DeleteCardButton Component
-export function DeleteCardButton() {
+export function DeleteCardButton({ cardID }: DeleteCardButtonProps) {
   // Define Hook
+  const dispatch = useAppDispatch();
+
+  const handleDeleteCard = () => {
+    dispatch(deleteCard(cardID));
+  };
+
   return (
-    // onclick="alert('Delete card')"
-    <button className="hidden group-hover/card:block">
+    <button
+      onClick={handleDeleteCard}
+      className="hidden group-hover/card:block"
+    >
       <svg
         className="h-[20px] w-[20px]"
         xmlns="http://www.w3.org/2000/svg"

@@ -27,7 +27,12 @@ export function List({ listID, listTitle }: ListProps) {
       <DeleteListButton listID={listID} />
       <h3>{listTitle}</h3>
       {cards.map((card) => (
-        <Card key={card.id} title={card.title} description={card.description} />
+        <Card
+          key={card.id}
+          title={card.title}
+          description={card.description}
+          cardID={card.id}
+        />
       ))}
       <NewCardForm listID={listID} />
     </div>

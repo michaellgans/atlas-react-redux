@@ -1,11 +1,11 @@
 // Slice for the cards in a list
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { listSlice } from "./listsSlice";
 
-interface Card {
+export interface Card {
   id: string;
   title: string;
   description: string;
+  listID: string;
 }
 
 interface CardState {
@@ -23,11 +23,12 @@ export const cardsSlice = createSlice({
   initialState,
   reducers: {
     // handleCreateCard
-    addCard: (state, action: PayloadAction<string>) => {
+    addCard: (state, action: PayloadAction<{ title: string; description: string; listID: string }>) => {
       const newCard = {
         id: Date.now().toString(),
-        title: action.payload,
-        description: action.payload,
+        title: action.payload.title,
+        description: action.payload.description,
+        listID: action.payload.listID,
       };
       state.items.push(newCard);
       console.log("A new card was created", newCard.id);

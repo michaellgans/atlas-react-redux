@@ -1,5 +1,11 @@
 // Slice for the cards in a list
+import { UniqueIdentifier } from "@dnd-kit/core";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface MoveCardPayload {
+  cardID: UniqueIdentifier;
+  newListID: UniqueIdentifier;
+}
 
 export interface Card {
   id: string;
@@ -31,7 +37,13 @@ export const cardsSlice = createSlice({
         listID: action.payload.listID,
       };
       state.items.push(newCard);
-      console.log("A new card was created", newCard.id);
+    },
+    // handleUpdatingId
+    moveCard: (state, action: PayloadAction<MoveCardPayload>) => {
+      const card = state.items.find(item => item.id === action.payload.cardID);
+      if (card) {
+        card.listID = action.payload.newListID;
+      }
     },
     // handledeleteCard
     deleteCard: (state, action: PayloadAction<string>) => {
@@ -45,7 +57,7 @@ export const cardsSlice = createSlice({
 });
 
 // Export Actions
-export const { addCard, deleteCard, clearBoard } = cardsSlice.actions;
+export const { addCard, moveCard, deleteCard, clearBoard } = cardsSlice.actions;
 
 // Export Reducer
 export default cardsSlice.reducer;

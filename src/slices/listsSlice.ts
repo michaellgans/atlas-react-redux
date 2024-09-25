@@ -28,11 +28,13 @@ export const listSlice = createSlice({
     reducers: {
         // handleAddList
         addList: (state, action: PayloadAction<string>) => {
-            state.items.push({
+            const newList = {
                 id: Date.now().toString(),
                 title: action.payload,
                 cardArray: [],
-            });
+            };
+            state.items.push(newList);
+            console.log(newList.id);
         },
         // handleDeleteList
         deleteList: (state, action: PayloadAction<string>) => {

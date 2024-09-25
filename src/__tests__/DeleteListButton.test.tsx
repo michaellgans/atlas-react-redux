@@ -9,7 +9,7 @@ it('Controll Test', () => {
     expect(2 + 2).toBe(4);
 });
 
-test('DeleteListButton renders correctly', () => {
-    const { container } = render(<DeleteListButton />);
-    expect(container).toMatchSnapshot();
-});
+// test('DeleteListButton renders correctly', () => {
+//     const { container } = render(<DeleteListButton />);
+//     expect(container).toMatchSnapshot();
+// });

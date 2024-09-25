@@ -9,17 +9,18 @@ import { NewCardForm } from "./NewCardForm";
 
 // Types
 type ListProps = {
+  listID: string;
   listTitle: string;
 };
 
 // Returns a List Component
-export function List({ listTitle }: ListProps) {
+export function List({ listID, listTitle }: ListProps) {
   // Define Hook
   return (
     // START LIST
     <div className="group/list h-full min-w-96 p-4">
       {/* onclick="alert('Delete list')" */}
-      <DeleteListButton />
+      <DeleteListButton listID={listID} />
       <h3>{listTitle}</h3>
       <Card title="Title" description="test..." />
       <Card title="Title" description="test..." />

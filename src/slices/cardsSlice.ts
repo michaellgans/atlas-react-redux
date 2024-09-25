@@ -1,31 +1,50 @@
-// Slice for the lists on the board
-import { createSlice } from "@reduxjs/toolkit";
+// Slice for the cards in a list
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { listSlice } from "./listsSlice";
 
-const initialState = {
-  // Lists have unique ID, title, and description
-  items: [
-    { id: "1", name: "Item 1", completed: false },
-    { id: "2", name: "Item 2", completed: true },
-  ],
+interface Card {
+  id: string;
+  title: string;
+  description: string;
+}
+
+interface CardState {
+  items: Card[];
+}
+
+const initialState: CardState = {
+  // Cards have unique ID, title, and description
+  items: [],
 };
 
 // Reducer Functions
-
-// handleCreateCard
-        // handleClearCard
-        deleteCard: (state, action: PayloadAction<string>) => {
-          state.items.forEach((item) => {
-              // Filter out the card by ID
-              item.cardArray = item.cardArray.filter(cardId => cardId !== action.payload);
-          });
-      },
-// handledeleteCard
-// handleClearBoard
-
 export const cardsSlice = createSlice({
-  name: "taskList",
+  name: "cardsSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    // handleCreateCard
+    addCard: (state, action: PayloadAction<string>) => {
+      const newCard = {
+        id: Date.now().toString(),
+        title: action.payload,
+        description: action.payload,
+      };
+      state.items.push(newCard);
+      console.log("A new card was created", newCard.id);
+    },
+    // handledeleteCard
+    deleteCard: (state, action: PayloadAction<string>) => {
+          state.items = state.items.filter(item => item.id !== action.payload);
+    },
+    // handleClearBoard
+    clearBoard: (state) => {
+      state.items = [];
+    },
+  }
 });
 
+// Export Actions
+export const { addCard, deleteCard, clearBoard } = cardsSlice.actions;
+
+// Export Reducer
 export default cardsSlice.reducer;

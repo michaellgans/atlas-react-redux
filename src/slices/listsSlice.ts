@@ -34,7 +34,7 @@ export const listSlice = createSlice({
                 cardArray: [],
             };
             state.items.push(newList);
-            console.log(newList.id);
+            console.log("A new list was created", newList.id);
         },
         // handleDeleteList
         deleteList: (state, action: PayloadAction<string>) => {

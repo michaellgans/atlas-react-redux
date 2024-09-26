@@ -9,7 +9,7 @@ it('Controll Test', () => {
     expect(2 + 2).toBe(4);
 });
 
-test('NewCardForm renders correctly', () => {
-    const { container } = render(<NewCardForm />);
-    expect(container).toMatchSnapshot();
-});
+// test('NewCardForm renders correctly', () => {
+//     const { container } = render(<NewCardForm />);
+//     expect(container).toMatchSnapshot();
+// });

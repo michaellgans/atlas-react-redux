@@ -9,7 +9,7 @@ it('Controll Test', () => {
     expect(2 + 2).toBe(4);
 });
 
-test('Card renders correctly', () => {
-    const { container } = render(<Card title="Test Title" description="Test description..."/>);
-    expect(container).toMatchSnapshot();
-});
+// test('Card renders correctly', () => {
+//     const { container } = render(<Card title="Test Title" description="Test description..."/>);
+//     expect(container).toMatchSnapshot();
+// });

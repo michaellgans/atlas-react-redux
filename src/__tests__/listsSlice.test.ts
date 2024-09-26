@@ -2,7 +2,7 @@
 
 // Imports
 import { describe, it, expect } from "vitest";
-import listsSlice, { List, addList, deleteList, clearBoard } from "../slices/listsSlice";
+import listsSlice, { List, addList, deleteList, clearBoard, addCardToList } from "../slices/listsSlice";
 
 describe('listsSlice reducer tests', () => {
     // Initially, no lists are present
@@ -21,6 +21,22 @@ describe('listsSlice reducer tests', () => {
     });
 
     // Test - addCardToList
+    it('should add a card to the specified list', () => {
+        const stateWithList = {
+            items: [
+                {title: 'Test Title', id: 'list-1', cardArray: []},
+                {title: 'Test Title', id: 'list-2', cardArray: []}
+            ] as List [],
+        };
+
+        const action = addCardToList({ listId: 'list-1', cardId: 'card-1'});
+        const state = listsSlice(stateWithList, action);
+
+        expect(state.items[0].cardArray).toContain('card-1');
+        expect(state.items[0].cardArray.length).toBe(1);
+        // Card added to the first list and not the second
+        expect(state.items[1].cardArray.length).toBe(0);
+    })
 
     // Test - deleteList
     it('should delete a list', () => {

@@ -2,7 +2,7 @@
 
 // Imports
 import { describe, it, expect } from "vitest";
-import listsSlice, { List, addList, clearBoard } from "../slices/listsSlice";
+import listsSlice, { List, addList, deleteList, clearBoard } from "../slices/listsSlice";
 
 describe('listsSlice reducer tests', () => {
     // Initially, no lists are present
@@ -20,33 +20,22 @@ describe('listsSlice reducer tests', () => {
         expect(state.items[0].cardArray).toEqual([]);
     });
 
-    // Test - moveCard
-    // it('should move a card to a new list', () => {
-    //     const stateWithCard = {
-    //         items: [
-    //             {id: '1', title: 'Test Title', description: 'Test Description', listID: '1'}
-    //         ] as Card [],
-    //     };
+    // Test - addCardToList
 
-    //     const action = moveCard({ cardID: '1', newListID: '2' });
-    //     const state = cardsSlice(stateWithCard, action);
+    // Test - deleteList
+    it('should delete a list', () => {
+        const stateWithList = {
+            items: [
+                {title: 'Test Title', id: '1'},
+                {title: 'Test Title', id: '2'}
+            ] as List [],
+        };
 
-    //     expect(state.items[0].listID).toBe('2');
-    // });
+        const action = deleteList('2');
+        const state = listsSlice(stateWithList, action);
 
-    // Test - deleteCard
-    // it('should delete a card', () => {
-    //     const stateWithCard = {
-    //         items: [
-    //             {id: '1', title: 'Test Title', description: 'Test Description', listID: '1'}
-    //         ] as Card [],
-    //     };
-
-    //     const action = deleteCard('1');
-    //     const state = cardsSlice(stateWithCard, action);
-
-    //     expect(state.items.length).toBe(0);
-    // });
+        expect(state.items.length).toBe(1);
+    });
 
     // Test - clearBoard
     it('should clear the whole board', () => {

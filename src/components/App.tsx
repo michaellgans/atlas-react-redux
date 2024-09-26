@@ -2,17 +2,20 @@
 
 // Imports
 import { Provider } from "react-redux";
-import { store } from "../store";
+import { persistor, store } from "../store";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { Board } from "./Board";
+import { PersistGate } from "redux-persist/integration/react";
 
 function App() {
   return (
     <Provider store={store}>
-      <Header />
-      <Board />
-      <Footer />
+      <PersistGate loading={null} persistor={persistor}>
+        <Header />
+        <Board />
+        <Footer />
+      </PersistGate>
     </Provider>
   );
 }

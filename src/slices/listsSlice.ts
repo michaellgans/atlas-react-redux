@@ -1,7 +1,7 @@
 // Slice for the lists on the board
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface List {
+export interface List {
     id: string;
     title: string;
     cardArray: string[];

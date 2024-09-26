@@ -2,7 +2,7 @@
 
 // Imports
 import { describe, it, expect } from "vitest";
-import cardsSlice, { addCard, moveCard, deleteCard } from "../slices/cardsSlice";
+import cardsSlice, { addCard, moveCard, deleteCard, clearBoard } from "../slices/cardsSlice";
 import { Card } from "../slices/cardsSlice";
 
 describe('cardsSlice reducer tests', () => {
@@ -48,6 +48,19 @@ describe('cardsSlice reducer tests', () => {
 
         expect(state.items.length).toBe(0);
     });
-    
+
     // Test - clearBoard
+    it('should clear the whole board', () => {
+        const stateWithCard = {
+            items: [
+                {id: '1', title: 'Test Title', description: 'Test Description', listID: '1'},
+                {id: '2', title: 'Test Title 2', description: 'Test Description 2', listID: '2'}
+            ] as Card [],
+        };
+
+        const action = clearBoard();
+        const state = cardsSlice(stateWithCard, action);
+
+        expect(state.items.length).toBe(0);
+    });
 })
